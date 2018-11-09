@@ -117,6 +117,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             currentLocation = locationManager.location
             
             milesInputVal = milesInput.text ?? "5"
+            if milesInputVal == "" { milesInputVal="5"; milesInput.text="5" }
             // if Int(milesInputVal)! > 100 { milesInputVal = "100" }
             // DOES IT MAKE SENSE TO LIMIT RESULTS TO A CERTAIN RANGE TO AVOID
             // OVERLOADING THE API?
@@ -160,8 +161,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                 var i = 0
                                 while i < num_of_stations {
                                     let tempStation = all_stations[i] as! [String:Any]
-                                    let temp_reg_price = tempStation["reg_price"]
-                                    if ((temp_reg_price as! String) == "N/A") {
+                                    var price_check = ""
+                                    switch self.selectedType {
+                                    case .medium:
+                                        price_check = tempStation["mid_price"] as! String
+                                    case .premium:
+                                        price_check = tempStation["pre_price"] as! String
+                                    case .diesel:
+                                        price_check = tempStation["diesel_price"] as! String
+                                    default:
+                                        price_check = tempStation["reg_price"] as! String
+                                    }
+                                    if ((price_check) == "N/A") {
                                         countNAs += 1
                                     } else { break }
                                     i += 1
@@ -173,35 +184,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                     i += 1
                                 }
                                 
+                                var station1, station2, station3: [String:Any]
+                                var station1_name="", station2_name="", station3_name=""
+                                var station1_distance="", station2_distance="", station3_distance=""
+                                var station1_reg_price="", station2_reg_price="", station3_reg_price=""
+                                var station1_mid_price="", station2_mid_price="", station3_mid_price=""
+                                var station1_pre_price="", station2_pre_price="", station3_pre_price=""
+                                var station1_diesel_price="", station2_diesel_price="", station3_diesel_price=""
                                 
-                                
+                                if good_stations.count >= 1 {
                                 //FOR STATION 1
-                                let station1 = good_stations[0] as! [String:Any]
-                                let station1_name = station1["station"] as AnyObject
-                                let station1_distance = station1["distance"] as AnyObject
-                                let station1_reg_price = station1["reg_price"] as AnyObject
-                                let station1_mid_price = station1["mid_price"] as AnyObject
-                                let station1_pre_price = station1["pre_price"] as AnyObject
-                                let station1_diesel_price = station1["diesel_price"] as AnyObject
+                                station1 = good_stations[0] as! [String:Any]
+                                station1_name = station1["station"] as? String ?? "No Name Found"
+                                station1_distance = station1["distance"] as! String
+                                station1_reg_price = station1["reg_price"] as! String
+                                station1_mid_price = station1["mid_price"] as! String
+                                station1_pre_price = station1["pre_price"] as! String
+                                station1_diesel_price = station1["diesel_price"] as! String
+                                }
                                 
+                                if good_stations.count >= 2 {
                                 //FOR STATION 2
-                                let station2 = good_stations[1] as! [String:Any]
-                                let station2_name = station2["station"] as AnyObject
-                                let station2_distance = station2["distance"] as AnyObject
-                                let station2_reg_price = station2["reg_price"] as AnyObject
-                                let station2_mid_price = station2["mid_price"] as AnyObject
-                                let station2_pre_price = station2["pre_price"] as AnyObject
-                                let station2_diesel_price = station2["diesel_price"] as AnyObject
+                                station2 = good_stations[1] as! [String:Any]
+                                station2_name = station2["station"] as? String ?? "No Name Found"
+                                station2_distance = station2["distance"] as! String
+                                station2_reg_price = station2["reg_price"] as! String
+                                station2_mid_price = station2["mid_price"] as! String
+                                station2_pre_price = station2["pre_price"] as! String
+                                station2_diesel_price = station2["diesel_price"] as! String
+                                }
                                 
+                                if good_stations.count >= 3 {
                                 //FOR STATION 3
-                                let station3 = good_stations[2] as! [String:Any]
-                                let station3_name = station3["station"] as AnyObject
-                                let station3_distance = station3["distance"] as AnyObject
-                                let station3_reg_price = station3["reg_price"] as AnyObject
-                                let station3_mid_price = station3["mid_price"] as AnyObject
-                                let station3_pre_price = station3["pre_price"] as AnyObject
-                                let station3_diesel_price = station3["diesel_price"] as
-                                AnyObject
+                                station3 = good_stations[2] as! [String:Any]
+                                station3_name = station3["station"] as? String ?? "No Name Found"
+                                station3_distance = station3["distance"] as! String
+                                station3_reg_price = station3["reg_price"] as! String
+                                station3_mid_price = station3["mid_price"] as! String
+                                station3_pre_price = station3["pre_price"] as! String
+                                station3_diesel_price = station3["diesel_price"] as! String
+                                }
                                 
                                 print("jsonResult")
                                 print(jsonResult)
@@ -209,19 +231,51 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                 print(all_stations)
                                 print("number of stations")
                                 print(num_of_stations)
+                                if num_of_stations >= 1 {
                                 print("station1")
                                 print(station1_name)
                                 print(station1_distance)
-                                print(station1_reg_price)
+                                switch self.selectedType {
+                                case .medium:
+                                    print(station1_mid_price)
+                                case .premium:
+                                    print(station1_pre_price)
+                                case .diesel:
+                                    print(station1_diesel_price)
+                                default:
+                                    print(station1_reg_price)
+                                }
+                                }
+                                if num_of_stations >= 2 {
                                 print("station2")
                                 print(station2_name)
                                 print(station2_distance)
-                                print(station2_reg_price)
+                                switch self.selectedType {
+                                case .medium:
+                                    print(station2_mid_price)
+                                case .premium:
+                                    print(station2_pre_price)
+                                case .diesel:
+                                    print(station2_diesel_price)
+                                default:
+                                    print(station2_reg_price)
+                                }
+                                }
+                                if num_of_stations >= 3 {
                                 print("station3")
                                 print(station3_name)
                                 print(station3_distance)
-                                print(station3_reg_price)
-                                
+                                switch self.selectedType {
+                                case .medium:
+                                    print(station3_mid_price)
+                                case .premium:
+                                    print(station3_pre_price)
+                                case .diesel:
+                                    print(station3_diesel_price)
+                                default:
+                                    print(station3_reg_price)
+                                }
+                                }
                                 
                             } catch {
                                 print("Json Processing Failed")
