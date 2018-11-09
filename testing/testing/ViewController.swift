@@ -15,12 +15,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     @IBOutlet weak var location_value: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         
-        let urlString = URL(string: "http://devapi.mygasfeed.com/stations/radius/34.06998601990433/-118.4428050624819/5/reg/price/rfej9napna.json?")
+        let urlString = URL(string: "http://devapi.mygasfeed.com/stations/radius/34.06998601990433/-118.7428050624818/5/reg/price/rfej9napna.json?")
         if let url = urlString {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if error != nil {
@@ -28,12 +28,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 } else {
                     if let urlContent = data {
                         do {
-                            let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: []) as! [String: AnyObject]
                             
+                            let stations = jsonResult["stations"] as! [Any]
+                            let a_station = stations[0] as! [String:Any]
                             
-                            print(jsonResult)
-                           // print(jsonResult([1]))
-                           // print(jsonResult["geoLocation"])
+                            let reg_price = a_station["reg_price"] as! AnyObject
+                            let mid_price = a_station["mid_price"] as! AnyObject
+                            let pre_price = a_station["pre_price"] as! AnyObject
+                            let diesel_price = a_station["diesel_price"] as! AnyObject
+                            
+                            print("hello")
+                            print(stations)
+                            print("prices")
+                            print(reg_price)
+                            print(mid_price)
+                            print(pre_price)
+                            print(diesel_price)
+                            
                         } catch {
                             print("Json Processing Failed")
                         }
