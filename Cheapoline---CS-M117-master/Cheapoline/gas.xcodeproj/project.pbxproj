@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331BFAD3219B7FB40083DA51 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331BFAD2219B7FB40083DA51 /* StationTableViewCell.swift */; };
 		D62A51AB2194E42A000D5DB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A51AA2194E42A000D5DB2 /* AppDelegate.swift */; };
 		D62A51AD2194E42A000D5DB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A51AC2194E42A000D5DB2 /* ViewController.swift */; };
 		D62A51B02194E42A000D5DB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D62A51AE2194E42A000D5DB2 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		331BFAD2219B7FB40083DA51 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		D62A51A72194E42A000D5DB2 /* gas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62A51AA2194E42A000D5DB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D62A51AC2194E42A000D5DB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				D62A51AA2194E42A000D5DB2 /* AppDelegate.swift */,
 				D62A51AC2194E42A000D5DB2 /* ViewController.swift */,
 				D62A51AE2194E42A000D5DB2 /* Main.storyboard */,
+				331BFAD2219B7FB40083DA51 /* StationTableViewCell.swift */,
 				D6AE7E7F2195011300D89A4D /* gastextfield.swift */,
 				D62A51B32194E42A000D5DB2 /* LaunchScreen.storyboard */,
 				D62A51B62194E42A000D5DB2 /* Info.plist */,
@@ -261,6 +264,7 @@
 			files = (
 				D62A51AD2194E42A000D5DB2 /* ViewController.swift in Sources */,
 				D62A51AB2194E42A000D5DB2 /* AppDelegate.swift in Sources */,
+				331BFAD3219B7FB40083DA51 /* StationTableViewCell.swift in Sources */,
 				D6AE7E802195011300D89A4D /* gastextfield.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
