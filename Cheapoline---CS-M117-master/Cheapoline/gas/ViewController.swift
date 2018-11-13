@@ -112,6 +112,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //}
     //@IBAction func getLocation(_ sender: UIButton) {
         //"start" getting location
+        
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
             currentLocation = locationManager.location

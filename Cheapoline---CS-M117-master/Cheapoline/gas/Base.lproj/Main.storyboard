@@ -126,7 +126,7 @@
                                     <action selector="checkBoxTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rp8-BC-CFM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Artboard 1" translatesAutoresizingMaskIntoConstraints="NO" id="FjN-Px-40f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="FjN-Px-40f">
                                 <rect key="frame" x="41" y="54" width="292" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -155,7 +155,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Artboard 1" width="300" height="390"/>
+        <image name="Logo" width="300" height="390"/>
         <image name="carBG" width="750" height="747"/>
         <image name="check" width="60" height="60"/>
         <image name="uncheck" width="60" height="60"/>
