@@ -21,11 +21,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var milesInputVal = ""
     
     struct station {
-        var name: String?
-        var distance: String?
-        var price: String?
-        var lat: String?
-        var lng: String?
+        var name: String
+        var distance: String
+        var price: String
+        var lat: String
+        var lng: String
     }
     
     var station1 = station(name: "", distance: "", price: "", lat: "", lng: "")
@@ -145,7 +145,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print(station1.name, station1.distance, station1.price, station1.lat, station1.lng)
         print(station2.name, station2.distance, station2.price, station2.lat, station2.lng)
         print(station3.name, station3.distance, station3.price, station3.lat, station3.lng)
-
+        
+        performSegue(withIdentifier: "ShowResults", sender: self)
     }
 
     
@@ -348,5 +349,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var results_vc = segue.destination as! ResultsViewController
+        
+        // Consider creating copy constructor for station lol
+        results_vc.station1.name = station1.name; results_vc.station1.price = station1.price; results_vc.station1.distance = station1.distance; results_vc.station1.lat = station1.lat; results_vc.station1.lng = station1.lng
+        results_vc.station2.name = station2.name; results_vc.station2.price = station2.price; results_vc.station2.distance = station2.distance; results_vc.station2.lat = station2.lat; results_vc.station2.lng = station2.lng
+        results_vc.station3.name = station3.name; results_vc.station3.price = station3.price; results_vc.station3.distance = station3.distance; results_vc.station3.lat = station3.lat; results_vc.station3.lng = station3.lng
+        
+        switch selectedType {
+        case .medium:
+            results_vc.selectedType = .medium
+        case .premium:
+            results_vc.selectedType = .premium
+        case .diesel:
+            results_vc.selectedType = .diesel
+        default:
+            results_vc.selectedType = .regular
+        }
+    }
+    
 }
 
