@@ -34,6 +34,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
     
+    @IBOutlet weak var logo: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -126,8 +130,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
 
-    
     @IBAction func find(_ sender: Any) {
+        
         var count = 0
         var find_done = false
         while (count < 10) {
@@ -141,14 +145,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
             count += 1
         }
-        while (!find_done) { /* I know, I know. Spin-lock!? Yes. I'm hungry. */ }
-        print(station1.name, station1.distance, station1.price, station1.lat, station1.lng)
-        print(station2.name, station2.distance, station2.price, station2.lat, station2.lng)
-        print(station3.name, station3.distance, station3.price, station3.lat, station3.lng)
+        while (!find_done) {
+            /* I know, I know. Spin-lock!? Yes. I'm hungry. */ }
         
         performSegue(withIdentifier: "ShowResults", sender: self)
     }
 
+    /*  I intended to animate the logo as a loading symbol, but have not yet figure out how to make the animation play while the program is busy getting the JSON
+    func animateCheapolineLogo() {
+        UIView.animate(withDuration: 0.15, delay: Double.random(in: 0..<0.2), options: .curveLinear, animations: {
+            self.logo.transform = CGAffineTransform(scaleX: CGFloat(Double.random(in:0.2..<0.8)), y: CGFloat(Double.random(in:0.2..<0.8)))
+            self.logo.transform = CGAffineTransform(rotationAngle: CGFloat(Double.random(in:1.5..<3.1416)/3))
+        }) { (success) in
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveLinear, animations: {
+                self.logo.transform = .identity
+            }, completion: nil)
+        }
+        /*if sender.isSelected {
+         sender.isSelected = false
+         } else {
+         sender.isSelected  = true
+         }*/
+    }*/
     
     
     

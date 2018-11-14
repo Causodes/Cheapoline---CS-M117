@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="carBG" translatesAutoresizingMaskIntoConstraints="NO" id="R4Y-MS-YGB">
-                                <rect key="frame" x="-165" y="0.0" width="593" height="667"/>
+                                <rect key="frame" x="0.0" y="-180" width="753" height="847"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0c-4c-2Tc">
                                 <rect key="frame" x="0.0" y="328" width="375" height="243"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="fill" borderStyle="line" placeholder="# of Miles" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-0I-Umo">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="# of Miles" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-0I-Umo">
                                         <rect key="frame" x="127" y="85" width="120" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,7 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="milesInput" destination="KfB-0I-Umo" id="45N-Vx-H99"/>
-                        <segue destination="YtM-xu-9qi" kind="presentation" identifier="ShowResults" id="X7L-Sb-ur9"/>
+                        <segue destination="YtM-xu-9qi" kind="custom" identifier="ShowResults" customClass="ShowResultsPage" customModule="gas" customModuleProvider="target" id="X7L-Sb-ur9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -157,7 +157,7 @@
         <!--Results View Controller-->
         <scene sceneID="AXx-K7-nGc">
             <objects>
-                <viewController id="YtM-xu-9qi" customClass="ResultsViewController" customModule="gas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="YtM-xu-9qi" customClass="ResultsViewController" customModule="gas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lbe-2M-Gq3"/>
                         <viewControllerLayoutGuide type="bottom" id="wCw-J3-QwL"/>
@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="carBG" translatesAutoresizingMaskIntoConstraints="NO" id="kXX-oA-9QR">
-                                <rect key="frame" x="-163" y="0.0" width="593" height="667"/>
+                                <rect key="frame" x="-378" y="-180" width="753" height="847"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-jc-hly">
@@ -198,14 +198,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReF-qw-3xP">
                                         <rect key="frame" x="262" y="42" width="73" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="uncheck"/>
-                                        <state key="selected" image="check"/>
+                                        <state key="normal" image="UnCheckboxSquare"/>
+                                        <state key="selected" image="checkSquare"/>
                                         <connections>
+                                            <action selector="checkBoxTapped:" destination="YtM-xu-9qi" eventType="touchUpInside" id="rGf-g6-Mmi"/>
                                             <action selector="checkBoxTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ujj-X6-a9j"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" label="station1_view"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="18"/>
@@ -240,14 +242,16 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlV-Tl-Iam">
                                         <rect key="frame" x="262" y="42" width="73" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="uncheck"/>
-                                        <state key="selected" image="check"/>
+                                        <state key="normal" image="UnCheckboxSquare"/>
+                                        <state key="selected" image="checkSquare"/>
                                         <connections>
+                                            <action selector="checkBoxTapped:" destination="YtM-xu-9qi" eventType="touchUpInside" id="oBx-nK-lKh"/>
                                             <action selector="checkBoxTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p3a-GJ-F2i"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" label="station2_view"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="18"/>
@@ -282,14 +286,16 @@
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5p2-AX-tah">
                                         <rect key="frame" x="262" y="42" width="73" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="uncheck"/>
-                                        <state key="selected" image="check"/>
+                                        <state key="normal" image="UnCheckboxSquare"/>
+                                        <state key="selected" image="checkSquare"/>
                                         <connections>
                                             <action selector="checkBoxTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Q9-6t-LHf"/>
+                                            <action selector="checkBoxTapped:" destination="YtM-xu-9qi" eventType="touchUpInside" id="ecH-0M-0fo"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <accessibility key="accessibilityConfiguration" label="station3_view"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="18"/>
@@ -313,10 +319,36 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="tga-On-oO6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iek-7J-D9i">
+                                <rect key="frame" x="137" y="489" width="222" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88450374949999999" green="0.92267527322053566" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment>
+                                            <string key="content">Open in
+Google Maps</string>
+                                            <attributes>
+                                                <font key="NSFont" size="26" name="AmericanTypewriter"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="OpenInGoogleMaps:" destination="YtM-xu-9qi" eventType="touchUpInside" id="mex-ix-jml"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="Station1_Checkbox" destination="ReF-qw-3xP" id="keT-6F-U1v"/>
                         <outlet property="Station1_Distance" destination="ObP-7b-fAd" id="0N1-ad-gy7"/>
                         <outlet property="Station1_Name" destination="czk-ky-AiL" id="fNq-8E-QyK"/>
                         <outlet property="Station1_Price" destination="E6x-TO-Dnj" id="6H5-iz-DMw"/>
@@ -326,6 +358,11 @@
                         <outlet property="Station3_Distance" destination="5Cq-cJ-NEg" id="PFV-Kq-X1k"/>
                         <outlet property="Station3_Name" destination="3OO-zf-Wya" id="wxc-xD-0eZ"/>
                         <outlet property="Station3_Price" destination="mva-hH-jB9" id="cpe-fW-Jc2"/>
+                        <outlet property="back_view" destination="pkQ-4t-HxS" id="khK-t2-mDS"/>
+                        <outlet property="google_view" destination="iek-7J-D9i" id="z2O-wG-CSy"/>
+                        <outlet property="station1_view" destination="f0y-jc-hly" id="Qef-he-fid"/>
+                        <outlet property="station2_view" destination="wXy-Wq-W0W" id="DGT-oY-dfn"/>
+                        <outlet property="station3_view" destination="I8O-sQ-0Le" id="qOW-KW-n4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3N-Lu-AsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,8 +372,10 @@
     </scenes>
     <resources>
         <image name="Logo" width="300" height="390"/>
+        <image name="UnCheckboxSquare" width="72" height="72"/>
         <image name="carBG" width="750" height="747"/>
         <image name="check" width="60" height="60"/>
+        <image name="checkSquare" width="72" height="72"/>
         <image name="uncheck" width="60" height="60"/>
     </resources>
 </document>
